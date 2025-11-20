@@ -119,15 +119,6 @@ export async function loginValidation(req, res) {
             maxAge: 30 * 60 * 1000 // 30 min in ms
         });
 
-
-        // security for production use 
-        // res.cookie('token', token, {
-        //     httpOnly: true,
-        //     secure: process.env.NODE_ENV === 'production', // HTTPS only in prod
-        //     sameSite: 'strict', // CSRF protection
-        //     maxAge: 30 * 60 * 1000
-        // });
-
         res.status(201).json({ message: "Login successful", success: true })
 
     } catch (err) {
@@ -140,12 +131,5 @@ export const logoutController = (req, res) => {
         httpOnly: true
     });
 
-
-    // same as when setting the cookie, all the properties should be same
-    // res.clearCookie('token', {
-    //     httpOnly: true,
-    //     secure: process.env.NODE_ENV === 'production',
-    //     sameSite: 'strict'
-    // });
     res.status(200).json({ message: 'Logged out successfully' });
 };
